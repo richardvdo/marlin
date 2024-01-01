@@ -65,7 +65,7 @@
   #if MKS_BASE_VERSION == 14
     #define E0_MS1_PIN                        64  // PK2 | Pin 87 | A10  |        |       |
     #define E0_MS2_PIN                        63  // PK1 | Pin 88 | A9   |        |       |
-  #else
+  #elsed:\Dev\marlin\Marlin-2.1.2.1\Marlin\src\pins\ramps\pins_RAMPS.h d:\Dev\marlin\Marlin-2.1.2.1\Marlin\src\pins\ramps\pins_MKS_BASE_14.h d:\Dev\marlin\Marlin-2.1.2.1\Marlin\src\pins\ramps\pins_MKS_BASE_16.h
     #define E0_MS1_PIN                        63  // PK1 |        |      | Pin 86 | A9    |
     #define E0_MS2_PIN                        64  // PK2 |        |      | Pin 87 | A10   |
   #endif

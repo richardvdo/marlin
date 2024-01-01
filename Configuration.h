@@ -91,7 +91,8 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_RAMPS_14_EFB
+  //#define MOTHERBOARD BOARD_RAMPS_14_EFB
+  #define MOTHERBOARD BOARD_MKS_BASE_16
 #endif
 
 /**
@@ -1166,25 +1167,25 @@
  * following movement settings. If fewer factors are given than the
  * total number of extruders, the last value applies to the rest.
  */
-//#define DISTINCT_E_FACTORS
+#define DISTINCT_E_FACTORS
 
 /**
  * Default Axis Steps Per Unit (linear=steps/mm, rotational=steps/°)
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 79.92, 79.73, 400, 137 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 79.92, 79.73, 400, 97.56, 95.25 }
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 500, 500, 4, 170 }
+#define DEFAULT_MAX_FEEDRATE          { 500, 500, 4, 170, 170 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 10, 50 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 10, 50, 50 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -1193,7 +1194,7 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 3000, 1000, 20, 10000 }
+#define DEFAULT_MAX_ACCELERATION      { 3000, 1000, 20, 10000, 10000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1280,7 +1281,7 @@
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
 #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
-
+//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 // Force the use of the probe for Z-axis homing
 //#define USE_PROBE_FOR_Z_HOMING
 
@@ -1327,10 +1328,10 @@
  */
 //#define NOZZLE_AS_PROBE
 
-/**
- * Z Servo Probe, such as an endstop switch on a rotating arm.
-#define Z_PROBE_SERVO_NR 0   // Defaults to SERVO 0 connector.
-#define Z_SERVO_ANGLES {10,90}  // Z Servo Deploy and Stow angles
+
+// * Z Servo Probe, such as an endstop switch on a rotating arm.
+//#define Z_PROBE_SERVO_NR 0   // Defaults to SERVO 0 connector.
+//#define Z_SERVO_ANGLES {10,90}  // Z Servo Deploy and Stow angles
 //#define Z_SERVO_ANGLES { 70, 0 } // Z Servo Deploy and Stow angles
 
 /**
@@ -1488,7 +1489,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 0, -57, -2 }
+#define NOZZLE_TO_PROBE_OFFSET { 0, -57, -4 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1658,8 +1659,8 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR false
-#define INVERT_E1_DIR false
+#define INVERT_E0_DIR true
+#define INVERT_E1_DIR true
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false
@@ -1787,15 +1788,16 @@
   //#define WATCH_ALL_RUNOUT_SENSORS      // Execute runout script on any triggering sensor, not only for the active extruder.
                                           // This is automatically enabled for MIXING_EXTRUDERs.
 
-  // Override individually if the runout sensors vary
-  //#define FIL_RUNOUT1_STATE LOW
-  //#define FIL_RUNOUT1_PULLUP
+  // Override individually if the runout sensors varyd:\Dev\marlin\Marlin-2.1.2.1\Marlin\src\pins\ramps\pins_MKS_BASE_common.h
+  #define FIL_RUNOUT_STATE LOW
+  #define FIL_RUNOUT_PULLUP
   //#define FIL_RUNOUT1_PULLDOWN
+  #define FIL_RUNOUT_PIN 4
 
   #define FIL_RUNOUT2_STATE HIGH
   #define FIL_RUNOUT2_PULLUP
   //#define FIL_RUNOUT2_PULLDOWN
-  #define FIL_RUNOUT2_PIN SERVO2_PIN
+  #define FIL_RUNOUT2_PIN 15
   //#define FIL_RUNOUT3_STATE LOW
   //#define FIL_RUNOUT3_PULLUP
   //#define FIL_RUNOUT3_PULLDOWN
